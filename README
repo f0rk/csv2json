@@ -1,0 +1,26 @@
+Take one or more CSV files and transform each row into a JSON object.
+
+Requires python.
+
+Examples:
+
+~$ cat /tmp/a.csv
+foo,bar,baz
+1,2,3
+4,5,6
+~$ cat /tmp/b.csv
+herp,derp,merp
+a,b,c
+e,f,g
+~$ csv2json /tmp/a.csv /tmp/b.csv
+{"baz": "3", "foo": "1", "bar": "2"}
+{"baz": "6", "foo": "4", "bar": "5"}
+{"merp": "c", "herp": "a", "derp": "b"}
+{"merp": "g", "herp": "e", "derp": "f"}
+
+You can also read from stdin using - or by specifying no files at all:
+
+~$ cat /tmp/a.csv | csv2json
+{"baz": "3", "foo": "1", "bar": "2"}
+{"baz": "6", "foo": "4", "bar": "5"}
+
